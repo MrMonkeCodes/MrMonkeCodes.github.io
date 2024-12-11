@@ -1,7 +1,13 @@
 h1 {
-  font-family: Monospace;
+  font-family: IBM Plex Serif;
   backgroud-color: skyblue;
   padding: 0px;
   margin: 0px;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: IBM Plex Serif;
+
 }
 
