@@ -23,3 +23,11 @@ h2 {
   text-size: 40px;
 }
 
+p {
+  text-align: center;
+  font-family: IBM Plex Serif;
+  font-weight: 400;
+  padding: 20px;
+  margin: 20px;
+}
+
