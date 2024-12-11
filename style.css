@@ -4,10 +4,16 @@ h1 {
   padding: 0px;
   margin: 0px;
   font-weight: 700;
+  text-align: center;
+  text-size: 60px;
 }
 
 h2 {
   font-family: IBM Plex Serif;
-
+  font-weight: 700;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  text-size: 40px;
 }
 
