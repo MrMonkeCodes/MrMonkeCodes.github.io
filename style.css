@@ -43,6 +43,7 @@ a:hover {
 
 .nav-link {
   text-decoration: none;
+  text-align: center;
 }
 
 .nav-link:hover {
