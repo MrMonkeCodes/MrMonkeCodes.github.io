@@ -37,6 +37,7 @@ a{
   text-decoration: underline;
   cursor: pointer;
 }
+
 a:hover {
   text-decoration: none;
 }
