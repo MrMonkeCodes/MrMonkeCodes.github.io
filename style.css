@@ -36,7 +36,9 @@ a{
   color: #16538c;
   text-decoration: underline;
   cursor: pointer;
+  display: block;
   text-align: center;
+}
 }
 
 a:hover {
