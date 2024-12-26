@@ -67,7 +67,7 @@ a:hover {
   width: auto;
   box-align: center;
   text-align: center;
-
+  position: absolute;
 }
 
 .btn:hover {
