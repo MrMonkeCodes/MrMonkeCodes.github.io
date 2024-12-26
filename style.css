@@ -55,14 +55,11 @@ a:hover {
 .btn {
   background-color: #16538c;
   border-radius: 2px;
-  border: 5px;
-  border-color: #123158;
   color: #ffffff;
   font-family: 'IBM Plex Serif' serif;
   font-size: 16px;
   font-weight: 400;
-  margin: 20px, 0px, 20px;
-  height: 20px;
+  padding: 14px;
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
