@@ -63,10 +63,6 @@ a:hover {
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
-  display: inline-block;
-  width: auto;
-  box-align: center;
-  text-align: center;
   position: absolute;
 }
 
