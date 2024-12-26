@@ -65,6 +65,8 @@ a:hover {
   cursor: pointer;
   display: inline-block;
   width: auto;
+  box-align: center;
+  text-align: center;
 
 }
 
