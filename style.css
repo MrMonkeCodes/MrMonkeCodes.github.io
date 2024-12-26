@@ -15,7 +15,7 @@ h1 {
 }
 
 h2 {
-  font-family: IBM Plex Serif;
+  font-family: 'IBM Plex Serif';
   font-weight: 700;
   padding: 20px;
   margin: 20px;
@@ -25,7 +25,7 @@ h2 {
 
 p {
   text-align: center;
-  font-family: IBM Plex Serif;
+  font-family: 'IBM Plex Serif';
   font-weight: 400;
   padding: 20px;
   margin: 20px;
