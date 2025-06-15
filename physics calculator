@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Physics Calculator & Cheatsheet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom scrollbar for better UX */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2563eb;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-white min-h-screen flex flex-col">
+
+  <header class="bg-blue-600 shadow-md py-6 mb-8">
+    <h1 class="text-4xl font-extrabold text-center text-white tracking-wide drop-shadow-md">Physics Calculator & Cheatsheet</h1>
+  </header>
+
+  <main class="flex-grow max-w-5xl mx-auto px-6 sm:px-12 md:px-16 mb-12">
+
+    <!-- Calculator Grid -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-semibold text-blue-700 mb-6 border-b-2 border-blue-300 pb-2">Interactive Calculators</h2>
+      <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+
+        <!-- Newton's Second Law -->
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
+          <h3 class="text-xl font-semibold mb-3 text-blue-800">Newton's Second Law <span class="text-gray-500">(F = m × a)</span></h3>
+          <label class="font-medium text-gray-700 mb-1" for="mass">Mass (kg):</label>
+          <input id="mass" type="number" min="0" step="any" placeholder="e.g. 10" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label class="font-medium text-gray-700 mb-1" for="acceleration">Acceleration (m/s²):</label>
+          <input id="acceleration" type="number" min="0" step="any" placeholder="e.g. 9.8" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <button onclick="calcForce()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate Force</button>
+          <p id="forceResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
+        </div>
+
+        <!-- Kinetic Energy -->
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
+          <h3 class="text-xl font-semibold mb-3 text-blue-800">Kinetic Energy <span class="text-gray-500">(KE = 0.5 × m × v²)</span></h3>
+          <label class="font-medium text-gray-700 mb-1" for="ke-mass">Mass (kg):</label>
+          <input id="ke-mass" type="number" min="0" step="any" placeholder="e.g. 5" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label class="font-medium text-gray-700 mb-1" for="ke-velocity">Velocity (m/s):</label>
+          <input id="ke-velocity" type="number" min="0" step="any" placeholder="e.g. 10" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <button onclick="calcKE()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate KE</button>
+          <p id="keResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
+        </div>
+
+        <!-- Gravitational Force -->
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
+          <h3 class="text-xl font-semibold mb-3 text-blue-800">Gravitational Force <span class="text-gray-500">(F = G × m₁ × m₂ / r²)</span></h3>
+          <label class="font-medium text-gray-700 mb-1" for="gf-m1">Mass 1 (kg):</label>
+          <input id="gf-m1" type="number" min="0" step="any" placeholder="e.g. 5.97e24" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label class="font-medium text-gray-700 mb-1" for="gf-m2">Mass 2 (kg):</label>
+          <input id="gf-m2" type="number" min="0" step="any" placeholder="e.g. 7.35e22" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label class="font-medium text-gray-700 mb-1" for="gf-r">Distance (m):</label>
+          <input id="gf-r" type="number" min="0" step="any" placeholder="e.g. 3.84e8" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <button onclick="calcGravity()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate Force</button>
+          <p id="gfResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
+        </div>
+
+        <!-- Ohm's Law -->
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
+          <h3 class="text-xl font-semibold mb-3 text-blue-800">Ohm's Law <span class="text-gray-500">(V = I × R)</span></h3>
+          <label class="font-medium text-gray-700 mb-1" for="ohm-current">Current (I) in Amps:</label>
+          <input id="ohm-current" type="number" min="0" step="any" placeholder="e.g. 2" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label class="font-medium text-gray-700 mb-1" for="ohm-resistance">Resistance (R) in Ohms:</label>
+          <input id="ohm-resistance" type="number" min="0" step="any" placeholder="e.g. 5" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <button onclick="calcVoltage()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate Voltage</button>
+          <p id="ohmResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
+        </div>
+
+        <!-- Escape Velocity -->
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
+          <h3 class="text-xl font-semibold mb-3 text-blue-800">Escape Velocity <span class="text-gray-500">(v = √(2GM/R))</span></h3>
+          <label class="font-medium text-gray-700 mb-1" for="ev-mass">Mass of planet (kg):</label>
+          <input id="ev-mass" type="number" min="0" step="any" placeholder="e.g. 5.97e24" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label class="font-medium text-gray-700 mb-1" for="ev-radius">Radius of planet (m):</label>
+          <input id="ev-radius" type="number" min="0" step="any" placeholder="e.g. 6.371e6" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <button onclick="calcEscapeVelocity()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate Escape Velocity</button>
+          <p id="evResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
+        </div>
+
+        <!-- Pressure -->
+        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
+          <h3 class="text-xl font-semibold mb-3 text-blue-800">Pressure <span class="text-gray-500">(P = F / A)</span></h3>
+          <label class="font-medium text-gray-700 mb-1" for="pressure-force">Force (N):</label>
+          <input id="pressure-force" type="number" min="0" step="any" placeholder="e.g. 100" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <label class="font-medium text-gray-700 mb-1" for="pressure-area">Area (m²):</label>
+          <input id="pressure-area" type="number" min="0" step="any" placeholder="e.g. 2" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <button onclick="calcPressure()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate Pressure</button>
+          <p id="pressureResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Visuals Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-semibold text-blue-700 mb-6 border-b-2 border-blue-300 pb-2">Visual Diagrams</h2>
+      <div class="grid gap-10 md:grid-cols-2">
+        <figure class="bg-white rounded-xl shadow-lg p-4">
+          <figcaption class="font-semibold text-blue-800 mb-3">Newton's Cradle - Newton's Third Law</figcaption>
+          <img src="/Users/nicholasstein/Downloads/Newtons_cradle_animation_book.gif" alt="Newton's Cradle" class="w-full rounded" />
+          <p class="mt-2 text-gray-600 text-sm">Newton's Cradle demonstrates action-reaction force pairs in motion.</p>
+        </figure>
+        <figure class="bg-white rounded-xl shadow-lg p-4">
+          <figcaption class="font-semibold text-blue-800 mb-3">Maxwell's Equations</figcaption>
+          <img src="/Users/nicholasstein/Downloads/Maxwell's_equations.svg" alt="Maxwell's Equations" class="w-full rounded" />
+          <p class="mt-2 text-gray-600 text-sm">Maxwell’s equations describe how electric and magnetic fields interact and propagate.</p>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Explanations Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-semibold text-teal-700 mb-8 border-b-2 border-teal-300 pb-2">Advanced Physics Laws and Principles</h2>
+    
+      <!-- Classical Mechanics -->
+      <div class="mb-10">
+        <h3 class="text-2xl font-semibold text-teal-600 mb-4 border-b border-teal-200 pb-1">Classical Mechanics</h3>
+        <ul class="list-disc list-inside space-y-4 text-gray-900">
+          <li>
+            <strong>Newton’s Laws of Motion:</strong> These three laws govern the motion of objects, defining inertia, the relationship between force, mass, and acceleration (\(F = ma\)), and the principle of action and reaction forces.
+          </li>
+          <li>
+            <strong>Law of Universal Gravitation:</strong> Every mass attracts every other mass with a force proportional to the product of their masses and inversely proportional to the square of their distance, \(F = G \frac{m_1 m_2}{r^2}\).
+          </li>
+          <li>
+            <strong>Conservation Laws:</strong> Conservation of energy, momentum, angular momentum, and electric charge are foundational principles reflecting symmetries and invariants in physical systems.
+          </li>
+          <li>
+            <strong>Archimedes’ Principle:</strong> The buoyant force on an object submerged in a fluid equals the weight of fluid displaced, explaining flotation.
+          </li>
+          <li>
+            <strong>Bernoulli’s Equation:</strong> Relates pressure, velocity, and height in fluid flow, critical for aerodynamics and hydrodynamics.
+          </li>
+          <li>
+            <strong>Hooke’s Law:</strong> Describes the restoring force of springs proportional to displacement, \(F = -kx\), fundamental to harmonic oscillators.
+          </li>
+          <li>
+            <strong>Lagrangian and Hamiltonian Mechanics:</strong> Reformulations of classical mechanics focusing on energy functions and generalized coordinates, foundational for advanced mechanics and quantum theory.
+          </li>
+          <li>
+            <strong>Law of Superposition:</strong> In linear systems, the net response caused by multiple stimuli is the sum of individual responses; essential in wave mechanics and quantum states.
+          </li>
+        </ul>
+      </div>
+    
+      <!-- Electromagnetism -->
+      <div class="mb-10">
+        <h3 class="text-2xl font-semibold text-teal-600 mb-4 border-b border-teal-200 pb-1">Electromagnetism</h3>
+        <ul class="list-disc list-inside space-y-4 text-gray-900">
+          <li>
+            <strong>Ohm’s Law:</strong> Defines the linear relationship between voltage, current, and resistance: \(V = IR\).
+          </li>
+          <li>
+            <strong>Faraday’s Law of Induction:</strong> A changing magnetic flux induces an electromotive force proportional to the rate of change, \(\mathcal{E} = -\frac{d\Phi_B}{dt}\).
+          </li>
+          <li>
+            <strong>Maxwell’s Equations:</strong> Four fundamental equations unifying electricity and magnetism, describing electric fields, magnetic fields, charge, and current interactions.
+          </li>
+          <li>
+            <strong>Law of Conservation of Charge:</strong> Electric charge cannot be created or destroyed; it is conserved.
+          </li>
+          <li>
+            <strong>Kirchhoff’s Laws:</strong> Circuit laws ensuring conservation of charge at junctions and energy around loops, essential for analyzing electrical networks.
+          </li>
+          <li>
+            <strong>Snell’s Law (Refraction):</strong> Governs bending of light waves between media of different refractive indices, \(n_1 \sin \theta_1 = n_2 \sin \theta_2\).
+          </li>
+          <li>
+            <strong>Fermat’s Principle:</strong> Light travels the path of least time, explaining refraction and optical path differences.
+          </li>
+        </ul>
+      </div>
+    
+      <!-- Thermodynamics -->
+      <div class="mb-10">
+        <h3 class="text-2xl font-semibold text-teal-600 mb-4 border-b border-teal-200 pb-1">Thermodynamics</h3>
+        <ul class="list-disc list-inside space-y-4 text-gray-900">
+          <li>
+            <strong>First Law of Thermodynamics:</strong> Energy conservation including heat and work in a system, \(\Delta U = Q - W\).
+          </li>
+          <li>
+            <strong>Second Law of Thermodynamics:</strong> Entropy of an isolated system never decreases, implying irreversibility and directionality of time.
+          </li>
+          <li>
+            <strong>Stefan-Boltzmann Law & Blackbody Radiation:</strong> Total radiation power from a blackbody scales as the fourth power of its temperature.
+          </li>
+          <li>
+            <strong>Thermodynamic Potentials:</strong> Functions like Helmholtz and Gibbs free energy govern spontaneity and equilibrium of thermodynamic systems.
+          </li>
+        </ul>
+      </div>
+    
+      <!-- Quantum Mechanics -->
+      <div class="mb-10">
+        <h3 class="text-2xl font-semibold text-teal-600 mb-4 border-b border-teal-200 pb-1">Quantum Mechanics</h3>
+        <ul class="list-disc list-inside space-y-4 text-gray-900">
+          <li>
+            <strong>Planck’s Quantum Hypothesis:</strong> Energy is quantized in packets \(E=hf\), foundational for quantum theory.
+          </li>
+          <li>
+            <strong>Pauli Exclusion Principle:</strong> Identical fermions cannot occupy the same quantum state simultaneously, essential for atomic structure.
+          </li>
+          <li>
+            <strong>Heisenberg Uncertainty Principle:</strong> Limits precision of simultaneous measurement of position and momentum: \(\Delta x \Delta p \geq \frac{\hbar}{2}\).
+          </li>
+          <li>
+            <strong>Schrödinger Equation:</strong> Governs the time evolution of quantum states via wavefunctions.
+          </li>
+          <li>
+            <strong>de Broglie Hypothesis:</strong> Particles exhibit wave-like behavior with wavelength \(\lambda = \frac{h}{p}\).
+          </li>
+          <li>
+            <strong>Quantum Tunneling:</strong> Quantum particles penetrate barriers higher than their kinetic energy due to wavefunction spread.
+          </li>
+          <li>
+            <strong>Quantum Entanglement:</strong> Correlated quantum states where measurement of one instantly affects the other, regardless of distance.
+          </li>
+          <li>
+            <strong>Casimir Effect:</strong> Attractive force between uncharged plates due to vacuum fluctuations, a manifestation of zero-point energy.
+          </li>
+          <li>
+            <strong>Quantum Field Theory (QFT):</strong> Framework combining quantum mechanics and special relativity, describing particles as field excitations.
+          </li>
+        </ul>
+      </div>
+    
+      <!-- Relativity and Cosmology -->
+      <div class="mb-10">
+        <h3 class="text-2xl font-semibold text-teal-600 mb-4 border-b border-teal-200 pb-1">Relativity & Cosmology</h3>
+        <ul class="list-disc list-inside space-y-4 text-gray-900">
+          <li>
+            <strong>Einstein’s Special Relativity:</strong> Relates space and time for inertial observers; introduces time dilation, length contraction, and mass-energy equivalence (\(E=mc^2\)).
+          </li>
+          <li>
+            <strong>General Relativity:</strong> Gravity as spacetime curvature caused by mass-energy, predicting black holes and gravitational waves.
+          </li>
+          <li>
+            <strong>Einstein Field Equations:</strong> Mathematical formulation connecting matter-energy content to spacetime curvature.
+          </li>
+          <li>
+            <strong>Hubble’s Law:</strong> Expanding universe observation where galaxies’ recessional velocity is proportional to their distance.
+          </li>
+          <li>
+            <strong>Relativistic Momentum and Energy:</strong> Extensions of classical formulas accounting for near-light-speed velocities, preserving conservation laws.
+          </li>
+        </ul>
+      </div>
+    
+      <!-- Fundamental Physics and Symmetry -->
+      <div class="mb-10">
+        <h3 class="text-2xl font-semibold text-teal-600 mb-4 border-b border-teal-200 pb-1">Fundamental Physics & Symmetry</h3>
+        <ul class="list-disc list-inside space-y-4 text-gray-900">
+          <li>
+            <strong>Noether’s Theorem:</strong> Every differentiable symmetry corresponds to a conservation law, linking symmetry principles to physical invariants.
+          </li>
+          <li>
+            <strong>Gauge Symmetry:</strong> Underpins interactions in particle physics, dictating the behavior of fundamental forces via symmetry groups.
+          </li>
+        </ul>
+      </div>
+    </section>
+    
+    
+
+  </main>
+
+
+  <script>
+    function calcForce() {
+      const m = parseFloat(document.getElementById("mass").value);
+      const a = parseFloat(document.getElementById("acceleration").value);
+      if (isNaN(m) || isNaN(a)) {
+        document.getElementById("forceResult").innerText = "Please enter valid numbers.";
+        return;
+      }
+      const f = m * a;
+      document.getElementById("forceResult").innerText = `Force = ${f.toFixed(3)} N`;
+    }
+
+    function calcKE() {
+      const m = parseFloat(document.getElementById("ke-mass").value);
+      const v = parseFloat(document.getElementById("ke-velocity").value);
+      if (isNaN(m) || isNaN(v)) {
+        document.getElementById("keResult").innerText = "Please enter valid numbers.";
+        return;
+      }
+      const ke = 0.5 * m * v * v;
+      document.getElementById("keResult").innerText = `Kinetic Energy = ${ke.toFixed(3)} J`;
+    }
+
+    function calcGravity() {
+      const G = 6.67430e-11;
+      const m1 = parseFloat(document.getElementById("gf-m1").value);
+      const m2 = parseFloat(document.getElementById("gf-m2").value);
+      const r = parseFloat(document.getElementById("gf-r").value);
+      if (isNaN(m1) || isNaN(m2) || isNaN(r) || r === 0) {
+        document.getElementById("gfResult").innerText = "Please enter valid numbers (r ≠ 0).";
+        return;
+      }
+      const F = G * m1 * m2 / (r * r);
+      document.getElementById("gfResult").innerText = `Gravitational Force = ${F.toExponential(3)} N`;
+    }
+
+    function calcVoltage() {
+      const I = parseFloat(document.getElementById("ohm-current").value);
+      const R = parseFloat(document.getElementById("ohm-resistance").value);
+      if (isNaN(I) || isNaN(R)) {
+        document.getElementById("ohmResult").innerText = "Please enter valid numbers.";
+        return;
+      }
+      const V = I * R;
+      document.getElementById("ohmResult").innerText = `Voltage = ${V.toFixed(3)} V`;
+    }
+
+    function calcEscapeVelocity() {
+      const G = 6.67430e-11;
+      const M = parseFloat(document.getElementById("ev-mass").value);
+      const R = parseFloat(document.getElementById("ev-radius").value);
+      if (isNaN(M) || isNaN(R) || R === 0) {
+        document.getElementById("evResult").innerText = "Please enter valid numbers (R ≠ 0).";
+        return;
+      }
+      const v = Math.sqrt(2 * G * M / R);
+      document.getElementById("evResult").innerText = `Escape Velocity = ${v.toFixed(3)} m/s`;
+    }
+
+    function calcPressure() {
+      const F = parseFloat(document.getElementById("pressure-force").value);
+      const A = parseFloat(document.getElementById("pressure-area").value);
+      if (isNaN(F) || isNaN(A) || A === 0) {
+        document.getElementBy
+```
+
+  </script>
+</body>
+</html>
