@@ -35,75 +35,64 @@
       <h2 class="text-3xl font-semibold text-blue-700 mb-6 border-b-2 border-blue-300 pb-2">Interactive Calculators</h2>
       <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
 
-        <!-- Newton's Second Law -->
-        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
-          <h3 class="text-xl font-semibold mb-3 text-blue-800">Newton's Second Law <span class="text-gray-500">(F = m × a)</span></h3>
-          <label class="font-medium text-gray-700 mb-1" for="mass">Mass (kg):</label>
-          <input id="mass" type="number" min="0" step="any" placeholder="e.g. 10" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <label class="font-medium text-gray-700 mb-1" for="acceleration">Acceleration (m/s²):</label>
-          <input id="acceleration" type="number" min="0" step="any" placeholder="e.g. 9.8" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <button onclick="calcForce()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate Force</button>
-          <p id="forceResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
+       <!-- Visual and Calculator Section --
+        <!-- Newton's 2nd Law Calculator -->
+        <div class="p-4 bg-gray-50 rounded-xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Newton's Second Law (F = m × a)</h3>
+          <label class="block mb-1">Mass (kg):</label>
+          <input id="mass" type="number" class="w-full border p-2 rounded mb-2" />
+          <label class="block mb-1">Acceleration (m/s²):</label>
+          <input id="acceleration" type="number" class="w-full border p-2 rounded mb-2" />
+          <button onclick="calcForce()" class="bg-blue-600 text-white px-4 py-2 rounded">Calculate Force</button>
+          <p id="forceResult" class="mt-2 font-semibold"></p>
         </div>
 
-        <!-- Kinetic Energy -->
-        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
-          <h3 class="text-xl font-semibold mb-3 text-blue-800">Kinetic Energy <span class="text-gray-500">(KE = 0.5 × m × v²)</span></h3>
-          <label class="font-medium text-gray-700 mb-1" for="ke-mass">Mass (kg):</label>
-          <input id="ke-mass" type="number" min="0" step="any" placeholder="e.g. 5" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <label class="font-medium text-gray-700 mb-1" for="ke-velocity">Velocity (m/s):</label>
-          <input id="ke-velocity" type="number" min="0" step="any" placeholder="e.g. 10" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <button onclick="calcKE()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate KE</button>
-          <p id="keResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
+        <!-- KE Calculator -->
+        <div class="p-4 bg-gray-50 rounded-xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Kinetic Energy (KE = 0.5 × m × v²)</h3>
+          <label class="block mb-1">Mass (kg):</label>
+          <input id="ke-mass" type="number" class="w-full border p-2 rounded mb-2" />
+          <label class="block mb-1">Velocity (m/s):</label>
+          <input id="ke-velocity" type="number" class="w-full border p-2 rounded mb-2" />
+          <button onclick="calcKE()" class="bg-blue-600 text-white px-4 py-2 rounded">Calculate KE</button>
+          <p id="keResult" class="mt-2 font-semibold"></p>
         </div>
 
-        <!-- Gravitational Force -->
-        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
-          <h3 class="text-xl font-semibold mb-3 text-blue-800">Gravitational Force <span class="text-gray-500">(F = G × m₁ × m₂ / r²)</span></h3>
-          <label class="font-medium text-gray-700 mb-1" for="gf-m1">Mass 1 (kg):</label>
-          <input id="gf-m1" type="number" min="0" step="any" placeholder="e.g. 5.97e24" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <label class="font-medium text-gray-700 mb-1" for="gf-m2">Mass 2 (kg):</label>
-          <input id="gf-m2" type="number" min="0" step="any" placeholder="e.g. 7.35e22" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <label class="font-medium text-gray-700 mb-1" for="gf-r">Distance (m):</label>
-          <input id="gf-r" type="number" min="0" step="any" placeholder="e.g. 3.84e8" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <button onclick="calcGravity()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate Force</button>
-          <p id="gfResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
+        <!-- Potential Energy Calculator -->
+        <div class="p-4 bg-gray-50 rounded-xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Potential Energy (PE = m × g × h)</h3>
+          <label class="block mb-1">Mass (kg):</label>
+          <input id="pe-mass" type="number" class="w-full border p-2 rounded mb-2" />
+          <label class="block mb-1">Height (m):</label>
+          <input id="pe-height" type="number" class="w-full border p-2 rounded mb-2" />
+          <button onclick="calcPE()" class="bg-blue-600 text-white px-4 py-2 rounded">Calculate PE</button>
+          <p id="peResult" class="mt-2 font-semibold"></p>
         </div>
 
-        <!-- Ohm's Law -->
-        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
-          <h3 class="text-xl font-semibold mb-3 text-blue-800">Ohm's Law <span class="text-gray-500">(V = I × R)</span></h3>
-          <label class="font-medium text-gray-700 mb-1" for="ohm-current">Current (I) in Amps:</label>
-          <input id="ohm-current" type="number" min="0" step="any" placeholder="e.g. 2" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <label class="font-medium text-gray-700 mb-1" for="ohm-resistance">Resistance (R) in Ohms:</label>
-          <input id="ohm-resistance" type="number" min="0" step="any" placeholder="e.g. 5" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <button onclick="calcVoltage()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate Voltage</button>
-          <p id="ohmResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
+        <!-- Ohm's Law Calculator -->
+        <div class="p-4 bg-gray-50 rounded-xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Ohm's Law (V = I × R)</h3>
+          <label class="block mb-1">Current (I, amps):</label>
+          <input id="current" type="number" class="w-full border p-2 rounded mb-2" />
+          <label class="block mb-1">Resistance (R, ohms):</label>
+          <input id="resistance" type="number" class="w-full border p-2 rounded mb-2" />
+          <button onclick="calcOhm()" class="bg-blue-600 text-white px-4 py-2 rounded">Calculate Voltage</button>
+          <p id="ohmResult" class="mt-2 font-semibold"></p>
         </div>
 
-        <!-- Escape Velocity -->
-        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
-          <h3 class="text-xl font-semibold mb-3 text-blue-800">Escape Velocity <span class="text-gray-500">(v = √(2GM/R))</span></h3>
-          <label class="font-medium text-gray-700 mb-1" for="ev-mass">Mass of planet (kg):</label>
-          <input id="ev-mass" type="number" min="0" step="any" placeholder="e.g. 5.97e24" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <label class="font-medium text-gray-700 mb-1" for="ev-radius">Radius of planet (m):</label>
-          <input id="ev-radius" type="number" min="0" step="any" placeholder="e.g. 6.371e6" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <button onclick="calcEscapeVelocity()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate Escape Velocity</button>
-          <p id="evResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
+        <!-- Gravitational Force Calculator -->
+        <div class="p-4 bg-gray-50 rounded-xl shadow">
+          <h3 class="text-xl font-semibold mb-2">Gravitational Force (F = G × m1 × m2 / r²)</h3>
+          <label class="block mb-1">Mass 1 (kg):</label>
+          <input id="gf-m1" type="number" class="w-full border p-2 rounded mb-2" />
+          <label class="block mb-1">Mass 2 (kg):</label>
+          <input id="gf-m2" type="number" class="w-full border p-2 rounded mb-2" />
+          <label class="block mb-1">Distance (m):</label>
+          <input id="gf-distance" type="number" class="w-full border p-2 rounded mb-2" />
+          <button onclick="calcGravForce()" class="bg-blue-600 text-white px-4 py-2 rounded">Calculate Gravitational Force</button>
+          <p id="gfResult" class="mt-2 font-semibold"></p>
         </div>
 
-        <!-- Pressure -->
-        <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
-          <h3 class="text-xl font-semibold mb-3 text-blue-800">Pressure <span class="text-gray-500">(P = F / A)</span></h3>
-          <label class="font-medium text-gray-700 mb-1" for="pressure-force">Force (N):</label>
-          <input id="pressure-force" type="number" min="0" step="any" placeholder="e.g. 100" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <label class="font-medium text-gray-700 mb-1" for="pressure-area">Area (m²):</label>
-          <input id="pressure-area" type="number" min="0" step="any" placeholder="e.g. 2" class="border rounded p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          <button onclick="calcPressure()" class="mt-auto bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Calculate Pressure</button>
-          <p id="pressureResult" class="mt-3 text-lg font-semibold text-gray-800 min-h-[1.5em]"></p>
-        </div>
-
-      </div>
     </section>
 
     <!-- Visuals Section -->
@@ -280,7 +269,7 @@
   </main>
 
 
-  <script>
+<script>
     function calcForce() {
       const m = parseFloat(document.getElementById("mass").value);
       const a = parseFloat(document.getElementById("acceleration").value);
@@ -303,49 +292,44 @@
       document.getElementById("keResult").innerText = `Kinetic Energy = ${ke.toFixed(3)} J`;
     }
 
-    function calcGravity() {
+    function calcPE() {
+      const m = parseFloat(document.getElementById("pe-mass").value);
+      const h = parseFloat(document.getElementById("pe-height").value);
+      const g = 9.81;
+      if (isNaN(m) || isNaN(h)) {
+        document.getElementById("peResult").innerText = "Please enter valid numbers.";
+        return;
+      }
+      const pe = m * g * h;
+      document.getElementById("peResult").innerText = `Potential Energy = ${pe.toFixed(3)} J`;
+    }
+
+    function calcOhm() {
+      const i = parseFloat(document.getElementById("current").value);
+      const r = parseFloat(document.getElementById("resistance").value);
+      if (isNaN(i) || isNaN(r)) {
+        document.getElementById("ohmResult").innerText = "Please enter valid numbers.";
+        return;
+      }
+      const v = i * r;
+      document.getElementById("ohmResult").innerText = `Voltage = ${v.toFixed(3)} V`;
+    }
+
+    function calcGravForce() {
       const G = 6.67430e-11;
       const m1 = parseFloat(document.getElementById("gf-m1").value);
       const m2 = parseFloat(document.getElementById("gf-m2").value);
-      const r = parseFloat(document.getElementById("gf-r").value);
+      const r = parseFloat(document.getElementById("gf-distance").value);
       if (isNaN(m1) || isNaN(m2) || isNaN(r) || r === 0) {
         document.getElementById("gfResult").innerText = "Please enter valid numbers (r ≠ 0).";
         return;
       }
-      const F = G * m1 * m2 / (r * r);
-      document.getElementById("gfResult").innerText = `Gravitational Force = ${F.toExponential(3)} N`;
+      const f = (G * m1 * m2) / (r * r);
+      document.getElementById("gfResult").innerText = `Gravitational Force = ${f.toExponential(3)} N`;
     }
-
-    function calcVoltage() {
-      const I = parseFloat(document.getElementById("ohm-current").value);
-      const R = parseFloat(document.getElementById("ohm-resistance").value);
-      if (isNaN(I) || isNaN(R)) {
-        document.getElementById("ohmResult").innerText = "Please enter valid numbers.";
-        return;
-      }
-      const V = I * R;
-      document.getElementById("ohmResult").innerText = `Voltage = ${V.toFixed(3)} V`;
-    }
-
-    function calcEscapeVelocity() {
-      const G = 6.67430e-11;
-      const M = parseFloat(document.getElementById("ev-mass").value);
-      const R = parseFloat(document.getElementById("ev-radius").value);
-      if (isNaN(M) || isNaN(R) || R === 0) {
-        document.getElementById("evResult").innerText = "Please enter valid numbers (R ≠ 0).";
-        return;
-      }
-      const v = Math.sqrt(2 * G * M / R);
-      document.getElementById("evResult").innerText = `Escape Velocity = ${v.toFixed(3)} m/s`;
-    }
-
-    function calcPressure() {
-      const F = parseFloat(document.getElementById("pressure-force").value);
-      const A = parseFloat(document.getElementById("pressure-area").value);
-      if (isNaN(F) || isNaN(A) || A === 0) {
-        document.getElementBy
-```
-
   </script>
+</body>
+</html>
+
 </body>
 </html>
